@@ -1,3 +1,10 @@
+# Python
+.venv
+results
+__pycache__/**/*
+
+# Java
+.java-version
 target/
 .idea/
 *.iml
@@ -5,3 +12,7 @@ target/
 .factorypath
 .project
 .settings/
+
+**/.vscode/**/*
+**/.DS_Store/**/*
+**/.DS_Store

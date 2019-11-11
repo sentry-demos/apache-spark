@@ -1,8 +1,8 @@
-# sentry-demos/scala-spark
+# scala-spark-example
 
 This demo covers using [Apache Spark](https://spark.apache.org/) with the Scala SDK with a simple application.
 
-This demo uses Apache Spark 2.4.4.
+This demo uses Apache Spark 2.4.4 and `sentry-java` 1.7.27
 
 ## First Time Setup
 
@@ -24,7 +24,7 @@ Install [sbt](https://www.scala-sbt.org/index.html) with homebrew
 brew install sbt
 ```
 
-Download Apache Spark - https://spark.apache.org/downloads.html
+Download Apache Spark version 2.4.4 with Hadoop 2.7 - https://spark.apache.org/downloads.html
 
 Set your `$SPARK_HOME` environmental variable to point to your Spark folder.
 
