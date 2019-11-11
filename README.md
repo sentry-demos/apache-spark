@@ -11,3 +11,5 @@ This demo uses `apache-spark` 2.4.4
 
 ## Docs
 
+- [Sentry PySpark Integration Documentation](https://docs.sentry.io/platforms/python/pyspark/)
+- [Apache Spark Documentation](https://spark.apache.org/docs/2.4.4/)

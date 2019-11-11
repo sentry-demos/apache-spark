@@ -1,7 +1,8 @@
 # Python
 .venv
 results
-__pycache__/**/*
+__pycache__/
+*.pyc
 
 # Java
 .java-version
