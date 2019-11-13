@@ -1,4 +1,5 @@
-/* SimpleApp.scala */
+package example
+
 import org.apache.spark.sql.SparkSession
 
 import io.sentry.Sentry
