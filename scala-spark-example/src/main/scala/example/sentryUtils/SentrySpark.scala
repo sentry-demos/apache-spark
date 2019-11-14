@@ -7,7 +7,7 @@ import io.sentry.SentryClientFactory;
 import io.sentry.event.UserBuilder;
 
 object SentrySpark {
-  def init(sc: SparkContext) {
+  def applyContext(sc: SparkContext) {
     Sentry.init();
 
     this.setTags(sc);
@@ -22,7 +22,7 @@ object SentrySpark {
     );
 
     tags.foreach(
-      pair => Sentry.getContext().addTag(pair._1, sparkConf.get(pair._2))
+      tag => Sentry.getContext().addTag(tag._1, sparkConf.get(tag._2))
     );
   }
 

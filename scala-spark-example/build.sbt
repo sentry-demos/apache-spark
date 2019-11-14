@@ -26,6 +26,6 @@ lazy val root: Project = project
     run / classLoaderLayeringStrategy := ClassLoaderLayeringStrategy.Flat,
     libraryDependencies ++= Seq(
       "org.apache.spark" %% "spark-sql" % "2.4.4",
-      "io.sentry" % "sentry-log4j" % "1.7.27",
+      "io.sentry" % "sentry" % "1.7.27",
     )
   )

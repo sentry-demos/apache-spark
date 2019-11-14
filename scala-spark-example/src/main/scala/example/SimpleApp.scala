@@ -1,11 +1,10 @@
-package example
+package example;
 
-import org.apache.spark.sql.SparkSession
-import org.apache.spark.sql.Dataset
-import example.sentryUtils.SentrySpark
-import example.sentryUtils.SentryListener
+import org.apache.spark.sql.SparkSession;
+import org.apache.spark.sql.Dataset;
+import example.sentryUtils.SentrySpark;
 
-import io.sentry.Sentry
+import io.sentry.Sentry;
 
 object SimpleApp {
   def main(args: Array[String]) {
@@ -18,12 +17,13 @@ object SimpleApp {
       .config("spark.extraListeners", "example.sentryUtils.SentryListener")
       .getOrCreate()
 
-    SentrySpark.init(spark.sparkContext)
+    SentrySpark.applyContext(spark.sparkContext)
 
     val logData = spark.read.textFile(logFile).cache()
 
     val numAs = logData.filter(line => {
-      val k = 1 / 0
+      // val k = 1 / 0
+      throw new IllegalStateException("Exception thrown");
       line.contains("a")
     }).count()
     val numBs = logData.filter(line => line.contains("b")).count()
