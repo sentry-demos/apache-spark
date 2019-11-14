@@ -48,5 +48,5 @@ $SPARK_HOME/bin/spark-submit \
   --master "local[4]" \
   --files "sentry.properties" \
   --packages "io.sentry:sentry-log4j:1.7.27" \
-  target/scala-2.11/simple-project_2.11-1.0.jar
+  target/scala-2.11/scala-spark-example_2.11-1.0.jar
 ```
