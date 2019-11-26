@@ -1,31 +1,30 @@
-/* SimpleApp.scala */
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.SparkSession;
+import org.apache.spark.sql.Dataset;
+import io.sentry.spark.SentrySpark;
 
-import io.sentry.Sentry
-
-import org.apache.logging.log4j.scala.Logging
-import org.apache.logging.log4j.Level
+import io.sentry.Sentry;
 
 object SimpleApp {
-  @transient lazy val logger = Logger.getLogger(SimpleApp.getName)
-
   def main(args: Array[String]) {
-    logger.error("This is an error")
-
-    try
-      1 / 0
-    catch {
-      case e: Exception =>
-        Sentry.capture(e)
-    }
-
     val sparkHome = sys.env("SPARK_HOME")
     val logFile = sparkHome.concat("/README.md")
 
-    val spark = SparkSession.builder.appName("Simple Application").getOrCreate()
+    Sentry.init()
+
+    val spark = SparkSession
+      .builder
+      .appName("Simple Application")
+      .config("spark.extraListeners", "io.sentry.spark.listener.SentrySparkListener")
+      .getOrCreate()
+
+    SentrySpark.applyContext(spark.sparkContext)
+
     val logData = spark.read.textFile(logFile).cache()
 
-    val numAs = logData.filter(line => line.contains("a")).count()
+    val numAs = logData.filter(line => {
+      throw new IllegalStateException("Exception thrown");
+      line.contains("a")
+    }).count()
     val numBs = logData.filter(line => line.contains("b")).count()
 
     println(s"Lines with a: $numAs, Lines with b: $numBs")

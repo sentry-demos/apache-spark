@@ -42,11 +42,26 @@ sbt package
 
 Run your application with `spark-submit`
 
+### Examples
+
+#### SimpleApp - uses `SentrySparkListener`
+
 ```bash
 $SPARK_HOME/bin/spark-submit \
   --class "SimpleApp" \
   --master "local[4]" \
   --files "sentry.properties" \
-  --packages "io.sentry:sentry-log4j:1.7.27" \
+  --packages "io.sentry:sentry-spark_2.11:0.0.1-alpha02" \
+  target/scala-2.11/simple-project_2.11-1.0.jar
+```
+
+#### SimpleQueryApp - uses `SentryQueryExecutionListener`
+
+```bash
+$SPARK_HOME/bin/spark-submit \
+  --class "SimpleQueryApp" \
+  --master "local[4]" \
+  --files "sentry.properties" \
+  --packages "io.sentry:sentry-spark_2.11:0.0.1-alpha02" \
   target/scala-2.11/simple-project_2.11-1.0.jar
 ```
