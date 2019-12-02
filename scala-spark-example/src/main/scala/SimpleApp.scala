@@ -1,5 +1,4 @@
-import org.apache.spark.sql.SparkSession;
-import org.apache.spark.sql.Dataset;
+import org.apache.spark.sql.{SparkSession, Dataset};
 import io.sentry.spark.SentrySpark;
 
 import io.sentry.Sentry;

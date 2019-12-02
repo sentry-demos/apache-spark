@@ -51,7 +51,7 @@ $SPARK_HOME/bin/spark-submit \
   --class "SimpleApp" \
   --master "local[4]" \
   --files "sentry.properties" \
-  --packages "io.sentry:sentry-spark_2.11:0.0.1-alpha02" \
+  --packages "io.sentry:sentry-spark_2.11:0.0.1-alpha04" \
   target/scala-2.11/simple-project_2.11-1.0.jar
 ```
 
@@ -62,6 +62,17 @@ $SPARK_HOME/bin/spark-submit \
   --class "SimpleQueryApp" \
   --master "local[4]" \
   --files "sentry.properties" \
-  --packages "io.sentry:sentry-spark_2.11:0.0.1-alpha02" \
+  --packages "io.sentry:sentry-spark_2.11:0.0.1-alpha04" \
+  target/scala-2.11/simple-project_2.11-1.0.jar
+```
+
+#### SimpleStreamingQueryApp - uses `SentryStreamingQueryListener`
+
+```bash
+$SPARK_HOME/bin/spark-submit \
+  --class "SimpleStreamingQueryApp" \
+  --master "local[4]" \
+  --files "sentry.properties" \
+  --packages "io.sentry:sentry-spark_2.11:0.0.1-alpha04" \
   target/scala-2.11/simple-project_2.11-1.0.jar
 ```
